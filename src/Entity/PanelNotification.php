@@ -1,0 +1,62 @@
+<?php
+namespace Juliangorge\Notifications\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+* @ORM\Entity
+* @ORM\Table(name="panel_notifications", indexes={
+    * @ORM\Index(name="active", columns={"active"}),
+    * @ORM\Index(name="user_id", columns={"user_id"})
+* })
+*/
+class PanelNotification
+{
+    /**
+    * @ORM\Id
+    * @ORM\Column(name="id", type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
+
+    /** @ORM\Column(name="text", type="string", length=100) */
+    protected $text;
+
+    /** @ORM\Column(name="date", type="datetime") */
+    protected $date;
+
+    /** @ORM\Column(name="active", unique=false, type="boolean") */
+    protected $active;
+
+    /** @ORM\Column(name="user_id", unique=false, type="integer") */
+    protected $user_id;
+
+    public function getArrayCopy(){
+        return [
+            'id' => $this->id,
+            'text' => $this->text,
+            'date' => $this->date,
+            'active' => $this->active,
+            'user_id' => $this->user_id,
+        ];
+    }
+
+    public function initialize($array){
+        $this->text = $array['text'];
+        $this->date = new \DateTime();
+        $this->active = 1;
+        $this->user_id = $array['user_id'];
+    }
+
+    public function exchangeArray($array){
+        $this->active = $array['active'];
+    }
+
+    public function getId(){ return $this->id; }
+    public function getText(){ return $this->text; }
+    public function getDate(){ return $this->date; }
+    public function getActive(){ return $this->active; }
+    public function getUserId(){ return $this->user_id; }
+
+    public function setActive($v){ $this->active = $v; }
+}

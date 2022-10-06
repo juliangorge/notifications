@@ -1,0 +1,16 @@
+{
+    "name": "juliangorge/notifications",
+    "description": "Module of Notifications",
+    "autoload": {
+        "psr-4": {
+            "Juliangorge\\Notifications\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Julián",
+            "email": "juliangorge@hotmail.com"
+        }
+    ],
+    "require": {}
+}
