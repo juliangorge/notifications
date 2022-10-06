@@ -1,9 +1,6 @@
 <?php
 namespace Juliangorge\Notifications;
 
-use Laminas\Mvc\MvcEvent;
-use Laminas\Mvc\Controller\AbstractActionController;
-
 class Module 
 {
 

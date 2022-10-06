@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Juliangorge\Notifications;
 
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-
 return [
     'controllers' => [
         'factories' => [
@@ -15,7 +13,7 @@ return [
     'doctrine' => [
         'driver' => [
             __NAMESPACE__ . '_driver' => [
-                'class' => AnnotationDriver::class,
+                'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
                 'cache' => 'array',
                 'paths' => [ __DIR__ . '/../src/Entity']
             ],

@@ -3,7 +3,6 @@ namespace Juliangorge\Notifications\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Juliangorge\Users\Service\AuthManager;
 
 class ControllerFactory implements FactoryInterface
 {

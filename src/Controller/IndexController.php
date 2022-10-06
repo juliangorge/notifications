@@ -35,4 +35,12 @@ class IndexController
         return true;
     }
 
+    public function get(string $type, int $id){
+
+    }
+
+    public function getBy(string $type, array $array){
+
+    }
+
 }
