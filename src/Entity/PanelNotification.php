@@ -22,6 +22,9 @@ class PanelNotification
     /** @ORM\Column(name="text", type="string", length=100) */
     protected $text;
 
+    /** @ORM\Column(name="url", type="string", nullable=true) */
+    protected $url;
+
     /** @ORM\Column(name="date", type="datetime") */
     protected $date;
 
@@ -35,6 +38,7 @@ class PanelNotification
         return [
             'id' => $this->id,
             'text' => $this->text,
+            'url' => $this->url,
             'date' => $this->date,
             'active' => $this->active,
             'user_id' => $this->user_id,
@@ -43,6 +47,7 @@ class PanelNotification
 
     public function initialize($array){
         $this->text = $array['text'];
+        $this->url = $array['url'] == NULL ? NULL : $array['url'];
         $this->date = new \DateTime();
         $this->active = 1;
         $this->user_id = $array['user_id'];
@@ -54,6 +59,7 @@ class PanelNotification
 
     public function getId(){ return $this->id; }
     public function getText(){ return $this->text; }
+    public function getUrl(){ return $this->url; }
     public function getDate(){ return $this->date; }
     public function getActive(){ return $this->active; }
     public function getUserId(){ return $this->user_id; }
