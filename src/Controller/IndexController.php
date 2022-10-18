@@ -29,7 +29,7 @@ class IndexController
             $this->flush();
         }
         catch(\Throwable $e){
-            return false;
+            throw new \Exception($e->getMessage());
         }
 
         return true;
