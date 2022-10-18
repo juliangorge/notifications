@@ -26,7 +26,7 @@ class IndexController
 
             $entity->initialize($array);
             $this->em->persist($entity);
-            $this->flush();
+            $this->em->flush();
         }
         catch(\Throwable $e){
             throw new \Exception($e->getMessage());
