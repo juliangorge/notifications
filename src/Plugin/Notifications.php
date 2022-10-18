@@ -1,10 +1,9 @@
 <?php
+namespace Juliangorge\Notifications\Plugin;
 
-declare(strict_types=1);
+use Laminas\Mvc\Controller\Plugin\AbstractPlugin;
 
-namespace Juliangorge\Notifications\Controller;
-
-class IndexController
+class Notifications extends AbstractPlugin 
 {
 
     protected $em;
@@ -42,4 +41,5 @@ class IndexController
     public function getBy(string $type, array $array){
 
     }
+
 }

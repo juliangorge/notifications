@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Juliangorge\Notifications;
 
 return [
-    'controllers' => [
+    'controller_plugins' => [
         'factories' => [
-            Controller\IndexController::class => Controller\Factory\ControllerFactory::class,
+            Plugin\Notifications::class => Plugin\Factory\NotificationsFactory::class,
         ],
+        'aliases' => [
+            'notifications' => Plugin\Notifications::class
+        ]
     ],
     'doctrine' => [
         'driver' => [
