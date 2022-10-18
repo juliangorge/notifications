@@ -47,7 +47,7 @@ class PanelNotification
 
     public function initialize($array){
         $this->text = $array['text'];
-        $this->url = $array['url'] == NULL ? NULL : $array['url'];
+        $this->url = $array['url'] == NULL ? '/notifications' : $array['url'];
         $this->date = new \DateTime();
         $this->active = 1;
         $this->user_id = $array['user_id'];

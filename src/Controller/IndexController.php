@@ -42,5 +42,4 @@ class IndexController
     public function getBy(string $type, array $array){
 
     }
-
 }
