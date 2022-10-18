@@ -18,10 +18,10 @@ class IndexController
     public function create(string $type, array $array){
         try {
             if($type == 'panel'){
-                $entity = new \Juliangorge\Notifications\PanelNotification();
+                $entity = new \Juliangorge\Notifications\Entity\PanelNotification();
             }
             else{
-                $entity = new \Juliangorge\Notifications\EmailNotification();
+                $entity = new \Juliangorge\Notifications\Entity\EmailNotification();
             }
 
             $entity->initialize($array);
