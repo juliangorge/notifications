@@ -25,7 +25,7 @@ class IndexController
             }
 
             $entity->initialize($array);
-            $this->em->persist();
+            $this->em->persist($entity);
             $this->flush();
         }
         catch(\Throwable $e){
