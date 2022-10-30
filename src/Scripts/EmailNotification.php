@@ -43,7 +43,7 @@ class EmailNotification extends Command
             return Command::FAILURE;
         }
 
-        $output->writeln('Enviados: ' . $results['stats']['sent'] . ', errors: ' . sizeof($results['stats']['errors']));
+        $output->writeln('Enviados: ' . $results['sent'] . ', errors: ' . sizeof($results['errors']));
         return Command::SUCCESS;
     }
 }
