@@ -5,7 +5,7 @@ use Laminas\Mvc\Controller\Plugin\AbstractPlugin;
 use Juliangorge\Notifications\Entity\PanelNotification;
 use Juliangorge\Notifications\Entity\EmailNotification;
 
-class Notifications extends AbstractPlugin 
+class NotificationsPlugin extends AbstractPlugin 
 {
 
     protected $em;
@@ -42,7 +42,10 @@ class Notifications extends AbstractPlugin
             'sent' => false
         ]);
 
-        $errors = [];
+        $results = [
+            'sent' => 0,
+            'errors' => []
+        ];
 
         foreach($entities as $entity){
             $success = true;
@@ -50,17 +53,18 @@ class Notifications extends AbstractPlugin
                 $mail->send($entity->getEmail(), $entity->getTitle(), $entity->getDetails(), true);
             }
             catch(\Throwable $e){
-                $errors[] = $e->getMessage();
+                $results['errors'][] = $e->getMessage();
                 $success = false;
             }
 
             if($success){
                 $entity->sent();
                 $this->em->flush();
+                $results['sent']++;
             }
         }
 
-        return $errors;
+        return $results;
     }
 
     public function get(string $type, int $id){

@@ -5,12 +5,22 @@ declare(strict_types=1);
 namespace Juliangorge\Notifications;
 
 return [
+    'laminas-cli' => [
+        'commands' => [
+            'notifications:send_emails' => Scripts\EmailNotification::class,
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            Scripts\EmailNotification::class => Scripts\Factory\CronScriptsFactory::class
+        ],
+    ],
     'controller_plugins' => [
         'factories' => [
-            Plugin\Notifications::class => Plugin\Factory\NotificationsFactory::class,
+            Plugin\NotificationsPlugin::class => Plugin\Factory\NotificationsPluginFactory::class,
         ],
         'aliases' => [
-            'notifications' => Plugin\Notifications::class
+            'notifications' => Plugin\NotificationsPlugin::class
         ]
     ],
     'doctrine' => [

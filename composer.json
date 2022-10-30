@@ -12,5 +12,7 @@
             "email": "juliangorge@hotmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "laminas/laminas-cli": "^1.5"
+    }
 }
