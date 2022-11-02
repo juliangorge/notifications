@@ -16,7 +16,7 @@ class NotificationsPlugin extends AbstractPlugin
         $this->config = $config;
     }
 
-    public function create(string $type, array $array){
+    public function create(string $type, array $array, $flush = true){
         try {
             if($type == 'panel'){
                 $entity = new PanelNotification();
@@ -27,7 +27,7 @@ class NotificationsPlugin extends AbstractPlugin
 
             $entity->initialize($array);
             $this->em->persist($entity);
-            $this->em->flush();
+            if($flush) $this->em->flush();
         }
         catch(\Throwable $e){
             throw new \Exception($e->getMessage());
@@ -65,6 +65,18 @@ class NotificationsPlugin extends AbstractPlugin
         }
 
         return $results;
+    }
+
+    public function sendToRankId(array $array, int $rank_id){
+        $users = $this->em->getRepository($this->config['authModule']['userEntity'])->findBy([
+            'rank_id' => $rank_id
+        ]);
+
+        foreach($users as $user){
+            $this->create('panel', $array, false);
+        }
+
+        $this->em->flush();
     }
 
     public function get(string $type, int $id){
