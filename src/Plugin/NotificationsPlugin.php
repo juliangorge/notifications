@@ -73,6 +73,7 @@ class NotificationsPlugin extends AbstractPlugin
         ]);
 
         foreach($users as $user){
+            $array['user_id'] = $user->getId();
             $this->create('panel', $array, false);
         }
 
