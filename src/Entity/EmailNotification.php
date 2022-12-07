@@ -52,7 +52,7 @@ class EmailNotification
         $this->details = $array['details'];
         $this->date = new \DateTime();
         $this->sent = 0;
-        $this->email = $array['email'];
+        $this->email = trim($array['email']);
     }
 
     public function sent(){

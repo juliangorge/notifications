@@ -36,8 +36,9 @@ class EmailNotification extends Command
         $has_errors = (sizeof($results['errors']) > 0);
         if($has_errors){
             $mail = new \Juliangorge\Mail\Mail($this->config);
-            $mail->send($this->config['mail_errors'], 
-                'CRON: Error al actualizar', 
+            $mail->send(
+                $this->config['mail_errors'], 
+                'CRON: Error al enviar notificaciones por email', 
                 '<pre>' , print_r($results['errors']) , '</pre>',
                 false);
             return Command::FAILURE;
