@@ -19,7 +19,7 @@ class PanelNotification
     */
     protected $id;
 
-    /** @ORM\Column(name="text", type="string", length=100) */
+    /** @ORM\Column(name="text", type="string") */
     protected $text;
 
     /** @ORM\Column(name="url", type="string", nullable=true) */
