@@ -67,9 +67,9 @@ class NotificationsPlugin extends AbstractPlugin
         return $results;
     }
 
-    public function sendToRankId(array $array, int $rank_id){
+    public function sendToRoleId(array $array, int $role_id){
         $users = $this->em->getRepository($this->config['authModule']['userEntity'])->findBy([
-            'rank_id' => $rank_id
+            'role_id' => $role_id
         ]);
 
         foreach($users as $user){
