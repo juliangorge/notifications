@@ -91,6 +91,7 @@ class NotificationsPlugin extends AbstractPlugin
     public function getActivesByUserId(int $user_id){
         return $this->em->createQuery('SELECT p FROM ' . PanelNotification::class . ' p WHERE p.active = 1 AND p.user_id = :user_id')
         ->setParameter('user_id', $user_id)
+        ->setMaxResults(10)
         ->getArrayResult();
     }
 
